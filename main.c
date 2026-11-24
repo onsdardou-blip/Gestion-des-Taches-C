@@ -39,7 +39,7 @@ void Saisir_Tache(tache *t)
         printf("saisir nombre des operateurs: ");
         scanf("%d",&t->nbop);
     }
-    while(t->nbop<1 || t->nbop>10);// validation nb opÈrateurs (0 ‡ 10)
+    while(t->nbop<1 || t->nbop>10);// validation nb op√©rateurs (0 √† 10)
     for(int i=0 ; i<t->nbop; i++)
     {
         printf("id operateur %d :",i+1);
@@ -158,20 +158,20 @@ void Ajouter_Op(LISTE L, char code[], int id)
         return;
     }
     int n=p->t.nbop;
-    if(n==10)// vÈrifier si le nombre maximal d'opÈrateurs est atteint
+    if(n==10)// v√©rifier si le nombre maximal d'op√©rateurs est atteint
     {
         printf("Max atteint");
         return;
     }
     for(int i=0; i<n; i++)
     {
-        if(p->t.idoperateurs[i]==id)// vÈrifier si l'opÈrateur existe dÈj‡
+        if(p->t.idoperateurs[i]==id)// v√©rifier si l'op√©rateur existe d√©j√†
         {
             printf("Operateur existe");
             return;
         }
     }
-    // ajout de l'opÈrateur
+    // ajout de l'op√©rateur
     p->t.idoperateurs[n] = id;
     (p->t.nbop)++;
 
@@ -185,7 +185,7 @@ LISTE Supprimer_Taches_Type(LISTE L, int type)
     {
         if(p->t.type==type)
         {
-            // cas 1 : suppression en tÍte
+            // cas 1 : suppression en t√™te
             if(q==NULL)
             {
                 L->tete = p->suiv;
@@ -265,14 +265,14 @@ int Calculer_Duree_Op(LISTE L, int id)
 int Verifier_Sequence(LISTE L, int id, int Seq[], int n)
 {
     NOEUD p=L->tete;
-    int i=0; // position de la sÈquence
-    while(p!=NULL && i<n) // parcourir toutes les t‚ches tant que la sÈquence n'est pas terminÈe
+    int i=0; // position de la s√©quence
+    while(p!=NULL && i<n) // parcourir toutes les t√¢ches tant que la s√©quence n'est pas termin√©e
     {
         if(p->t.type==Seq[i])//verification le type
         {
             for(int j=0; j<p->t.nbop; j++)
             {
-                if(p->t.idoperateurs[j]== id)//vÈrifcation que líopÈrateur a participÈ
+                if(p->t.idoperateurs[j]== id)//v√©rifcation que l‚Äôop√©rateur a particip√©
                 {
                     i++;
                     break ;
@@ -292,7 +292,7 @@ int Verifier_Efficace(LISTE L, int id, int Seq[], int n, float P)
     int d1,d2;
     d1 = Calculer_Duree_Op(L,id);
     d2 = Duree_Tot(L);
-    pr = ((float)(d1/d2))*100;
+    pr = ((float)d1/d2))*100;
     if(pr>=P && Verifier_Sequence(L,id,Seq,n)==1)
         return 1;
     return 0;
@@ -312,16 +312,16 @@ int main()
 
     do
     {
-        printf ("----------------Gestion des t‚ches-------------\n");
+        printf ("----------------Gestion des t√¢ches-------------\n");
         printf (" 1-Ajouter une tache\n");
-        printf (" 2-Afficher la liste des t‚ches\n");
-        printf (" 3-Afficher la durÈe totale\n");
-        printf (" 4-InsÈrer une t‚che\n");
-        printf (" 5-Ajouter un opÈrateur\n");
-        printf (" 6-Supprimer les t‚ches par type\n");
-        printf (" 7-Remplacer un opÈrateur\n");
+        printf (" 2-Afficher la liste des t√¢ches\n");
+        printf (" 3-Afficher la dur√©e totale\n");
+        printf (" 4-Ins√©rer une t√¢che\n");
+        printf (" 5-Ajouter un op√©rateur\n");
+        printf (" 6-Supprimer les t√¢ches par type\n");
+        printf (" 7-Remplacer un op√©rateur\n");
         printf (" 8-Trier la liste\n");
-        printf (" 9-Verifier líefficacitÈ díun opÈrateur");
+        printf (" 9-Verifier l‚Äôefficacit√© d‚Äôun op√©rateur");
         printf("\n 0-Quitter\n");
         printf("\n Choix (0~9): ");
         scanf("%d",&choix);
